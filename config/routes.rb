@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :events
   root "events#index"
   # Defines the root path route ("/")
-  devise_for :users, controllers: { sessions: 'users/sessions' }
-  devise_for :users, controllers: { registrations: 'users/registrations' }
-  # devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 end
