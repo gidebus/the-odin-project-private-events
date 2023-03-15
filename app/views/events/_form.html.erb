@@ -1,0 +1,15 @@
+<%= form_with model: @kitten do |form| %>
+  <%= form.label :name, 'name' %>
+  <%= form.text_field :name %>
+</br>
+  <%= form.label :date, 'date' %>
+  <%= form.date_field :date %>
+</br>
+  <%= form.label :description, 'description' %>
+  <%= form.text_field :description %>
+</br>
+  <%= form.label :location, 'location' %>
+  <%= form.text_field :location %>
+</br>
+  <%= form.submit 'submit' %>
+<% end %>
