@@ -1,4 +1,9 @@
 <div class='row g-3'>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <%= link_to "Home", root_path, class: "btn btn-dark" %>
+    <%= link_to "Edit", edit_event_path, class: "btn btn-dark" %>
+    <%= link_to 'Delete', event_path, class: "btn btn-dark", data: {turbo_method: :delete} %>
+  </div>
   <div class='col-lg-12'>
     <div class="card">
       <img class="card-img-top" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f211ab5f-e703-4840-a8e3-db59a55e4ffa/ddfxej5-8688072f-8a87-43f8-9a63-dbd64e9b2aee.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YyMTFhYjVmLWU3MDMtNDg0MC1hOGUzLWRiNTlhNTVlNGZmYVwvZGRmeGVqNS04Njg4MDcyZi04YTg3LTQzZjgtOWE2My1kYmQ2NGU5YjJhZWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BbGPsoMOpll7oRjDkZrK0rLS06FuzQkcjGqPZUDZjWI" alt="card image">
@@ -11,7 +16,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to "Home", root_path %>
-<%= link_to "Edit", edit_event_path %>
-<%= link_to 'Delete', event_path, data: {turbo_method: :delete} %>

@@ -10,7 +10,7 @@
         <h5 class="card-title"><%= event.name %></h5>
         <h6 class="card-subtitle mb-2 text-danger"><%= event.date %></h6>
         <h6 class="card-subtitle mb-2 text-muted"><%= event.location %></h6>
-        <h6 class="card-subtitle mb-2 text-muted"><%= link_to 'check event', event_path(event) %></h6>
+        <h6 class="card-subtitle mb-2 text-muted"><%= link_to 'check event', event_path(event), class: "btn btn-dark" %></h6>
       </div>
     </div>
   </div>
