@@ -2,7 +2,7 @@
   <h4>New Event</h4>
   <% if @event.errors.any? %>
       <label>
-        <%= pluralize(@event.errors.count, "error") %> occured while creat your event:
+        <%= pluralize(@event.errors.count, "error") %> occured while creating your event:
       </label>
       <ul>
         <% @event.errors.full_messages.each do |message| %>

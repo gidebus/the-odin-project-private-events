@@ -1,2 +1,14 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<div class=' row g-3'>
+  <h4>Edit Event</h4>
+  <% if @event.errors.any? %>
+      <label>
+        <%= pluralize(@event.errors.count, "error") %> occured while editing your event:
+      </label>
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+  <%= render 'form' %>
+</div>
