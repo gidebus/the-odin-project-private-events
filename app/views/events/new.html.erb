@@ -1,13 +1,14 @@
-<h2>New Event</h2>
-<% if @event.errors.any? %>
-    <label>
-      <%= pluralize(@event.errors.count, "error") %> occured while creating your event:
-    </label>
-    <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
-<%= render 'form' %>
-<%= button_to "Cancel", root_path, method: :get %>
+<div class=' row g-3'>
+  <h4>New Event</h4>
+  <% if @event.errors.any? %>
+      <label>
+        <%= pluralize(@event.errors.count, "error") %> occured while creat your event:
+      </label>
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+  <%= render 'form' %>
+</div>

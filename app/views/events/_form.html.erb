@@ -1,15 +1,19 @@
-<%= form_with model: @kitten do |form| %>
-  <%= form.label :name, 'name' %>
-  <%= form.text_field :name %>
-</br>
-  <%= form.label :date, 'date' %>
-  <%= form.date_field :date %>
-</br>
-  <%= form.label :description, 'description' %>
-  <%= form.text_field :description %>
-</br>
-  <%= form.label :location, 'location' %>
-  <%= form.text_field :location %>
-</br>
-  <%= form.submit 'submit' %>
-<% end %>
+  <div class='col-3'>
+    <%= form_with model: @event do |form| %>
+      <%= form.label :name, 'name' %>
+      <%= form.text_field :name, class: 'form-control form-control-sm' %>
+    </br>
+      <%= form.label :date, 'date' %>
+      <%= form.date_field :date, class: 'form-control form-control-sm'%>
+    </br>
+      <%= form.label :description, 'description' %>
+      <%= form.text_field :description, class: 'form-control form-control-sm' %>
+    </br>
+      <%= form.label :location, 'location' %>
+      <%= form.text_field :location, class: 'form-control form-control-sm' %>
+    </br>
+      <%= form.submit 'submit', class: "btn btn-primary col-12" %>
+    <% end %>
+    </br>
+    <%= button_to "Cancel", root_path, class: "btn btn-danger col-12", method: :get %>
+  </div>
