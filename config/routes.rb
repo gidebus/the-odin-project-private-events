@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "events#index"
   # Defines the root path route ("/")
-  resources :confirmations, only: [:create, :destroy, :update]
+  resources :confirmations, only: [:create, :destroy]
 end
