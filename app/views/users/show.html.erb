@@ -6,9 +6,16 @@
     <p><%= event.name %></p>
   <% end %>
   <div>
-    <h3>Attended Events</h3>
+    <h3>Upcoming Events</h3>
       <ul class="list-group">
-        <% @user.confirmations.each do |confirmation| %>
+        <% @user.attended_events.where("date >= ? ", Date.today).each do |confirmation| %>
+          <li class="list-group-item"><%= Event.find(confirmation.attended_event_id).name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <h3>Past Events</h3>
+      <ul class="list-group">
+        <% @user.attended_events.where("date < ? ").each do |confirmation| %>
           <li class="list-group-item"><%= Event.find(confirmation.attended_event_id).name %></li>
         <% end %>
       </ul>
