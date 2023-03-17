@@ -5,4 +5,12 @@
   <% @user.created_events.each do |event| %>
     <p><%= event.name %></p>
   <% end %>
+  <div>
+    <h3>Attended Events</h3>
+      <ul class="list-group">
+        <% @user.confirmations.each do |confirmation| %>
+          <li class="list-group-item"><%= Event.find(confirmation.attended_event_id).name %></li>
+        <% end %>
+      </ul>
+    </div>
 </div>
