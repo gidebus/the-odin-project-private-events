@@ -14,5 +14,12 @@
         <p class="card-subtitle mb-2"><%= @event.description %></p>
       </div>
     </div>
-  </div>
+    <div>
+    <h3>Attendees</h3>
+      <ul class="list-group">
+        <% @event.confirmations.each do |confirmation| %>
+          <li class="list-group-item"><%= User.find(confirmation.event_attendee_id).username %></li>
+        <% end %>
+      </ul>
+    </div>
 </div>
