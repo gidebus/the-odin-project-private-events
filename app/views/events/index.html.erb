@@ -2,7 +2,7 @@
 
   <h3>Events</h3>
 
-  <% @events.each do |event| %>
+  <% @events.upcoming.each do |event| %>
   <div class='col-12 col-md-6 col-lg-3'>
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f211ab5f-e703-4840-a8e3-db59a55e4ffa/ddfxej5-8688072f-8a87-43f8-9a63-dbd64e9b2aee.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YyMTFhYjVmLWU3MDMtNDg0MC1hOGUzLWRiNTlhNTVlNGZmYVwvZGRmeGVqNS04Njg4MDcyZi04YTg3LTQzZjgtOWE2My1kYmQ2NGU5YjJhZWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BbGPsoMOpll7oRjDkZrK0rLS06FuzQkcjGqPZUDZjWI" alt="card image">
@@ -17,6 +17,23 @@
         <% else %>
           <%= button_to 'Join', confirmations_path, params: { attended_event_id: event.id, event_attendee_id: current_user.id }, method: :post, class: "btn btn-dark" %>
         <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+  <h3>Past Events</h3>
+  
+  <% @events.past.each do |event| %>
+  <div class='col-12 col-md-6 col-lg-3'>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f211ab5f-e703-4840-a8e3-db59a55e4ffa/ddfxej5-8688072f-8a87-43f8-9a63-dbd64e9b2aee.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YyMTFhYjVmLWU3MDMtNDg0MC1hOGUzLWRiNTlhNTVlNGZmYVwvZGRmeGVqNS04Njg4MDcyZi04YTg3LTQzZjgtOWE2My1kYmQ2NGU5YjJhZWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BbGPsoMOpll7oRjDkZrK0rLS06FuzQkcjGqPZUDZjWI" alt="card image">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= event.name %></h5>
+        <h6 class="card-subtitle mb-2 text-danger"><%= event.date %></h6>
+        <h6 class="card-subtitle mb-2 text-muted"><%= event.location %></h6>
+        <h6 class="card-subtitle mb-2 text-muted"><%= link_to 'check event', event_path(event), class: "btn btn-dark" %></h6>
       </div>
     </div>
   </div>
