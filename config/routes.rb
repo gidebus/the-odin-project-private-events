@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  get '/users/:id', to: 'users#show'
+  get '/users/:id', to: 'users#show', as: :user
   resources :events
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "events#index"
