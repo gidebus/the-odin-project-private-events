@@ -11,11 +11,13 @@
         <h6 class="card-subtitle mb-2 text-danger"><%= event.date %></h6>
         <h6 class="card-subtitle mb-2 text-muted"><%= event.location %></h6>
         <h6 class="card-subtitle mb-2 text-muted"><%= link_to 'check event', event_path(event), class: "btn btn-dark" %></h6>
-        <% if event.attendees.include?(current_user)  %>
-          <% user_confirmation = Confirmation.find_by(event_attendee_id: current_user.id, attended_event_id: event.id) %>
-          <%= button_to 'Unregister', confirmation_path(user_confirmation), data: { turbo_method: "delete" }, method: :delete, class: "btn btn-danger" %>
-        <% else %>
-          <%= button_to 'Join', confirmations_path, params: { attended_event_id: event.id, event_attendee_id: current_user.id }, method: :post, class: "btn btn-dark" %>
+        <% if user_signed_in? %>
+          <% if event.attendees.include?(current_user)  %>
+            <% user_confirmation = Confirmation.find_by(event_attendee_id: current_user.id, attended_event_id: event.id) %>
+            <%= button_to 'Unregister', confirmation_path(user_confirmation), data: { turbo_method: "delete" }, method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= button_to 'Join', confirmations_path, params: { attended_event_id: event.id, event_attendee_id: current_user.id }, method: :post, class: "btn btn-dark" %>
+          <% end %>
         <% end %>
       </div>
     </div>
