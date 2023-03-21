@@ -1,25 +1,32 @@
+<h1 class="card-title"><%= @event.name %></h1>
 <div class='row g-3'>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <%= link_to "Home", root_path, class: "btn btn-dark" %>
-    <%= link_to "Edit", edit_event_path, class: "btn btn-dark" %>
-    <%= link_to 'Delete', event_path, class: "btn btn-dark", data: {turbo_method: :delete} %>
+  <div class='col-lg-6'>
+    <div class='card mb-2 p-2'>
+      <h3>When and Where:</h3>
+      <h6 class="card-subtitle mb-2">Date: <%= @event.date %></h6>
+      <h6 class="card-subtitle mb-2">Location: <%= @event.location %></h6>
+    </div>
+    <div class='card mb-2 p-2'>
+      <h3>About this event</h3>
+      <p class="card-subtitle mb-2"><%= @event.description %></p>
+    </div>
   </div>
-  <div class='col-lg-12'>
-    <div class="card">
+  <div class='col-lg-6'>
+    <div class="card mb-2 p-2">
       <img class="card-img-top" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f211ab5f-e703-4840-a8e3-db59a55e4ffa/ddfxej5-8688072f-8a87-43f8-9a63-dbd64e9b2aee.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2YyMTFhYjVmLWU3MDMtNDg0MC1hOGUzLWRiNTlhNTVlNGZmYVwvZGRmeGVqNS04Njg4MDcyZi04YTg3LTQzZjgtOWE2My1kYmQ2NGU5YjJhZWUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.BbGPsoMOpll7oRjDkZrK0rLS06FuzQkcjGqPZUDZjWI" alt="card image">
-      <div class="card-body text-center">
-        <h6 class="card-subtitle mb-2 text-danger"><%= @event.date %></h6>
-        <h1 class="card-title"><%= @event.name %></h1>
-        <h6 class="card-subtitle mb-2 text-muted"><%= @event.location %></h6>
-        <p class="card-subtitle mb-2"><%= @event.description %></p>
-      </div>
     </div>
-    <div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to "Home", root_path, class: "btn btn-dark" %>
+      <%= link_to "Edit", edit_event_path, class: "btn btn-dark" %>
+      <%= link_to 'Delete', event_path, class: "btn btn-dark", data: {turbo_method: :delete} %>
+    </div>
+  </div>
+  <div class='col-lg-6'>
     <h3>Attendees</h3>
-      <ul class="list-group">
-        <% @event.confirmations.each do |confirmation| %>
-          <li class="list-group-item"><%= User.find(confirmation.event_attendee_id).username %></li>
-        <% end %>
-      </ul>
-    </div>
+    <ul class="list-group">
+      <% @event.confirmations.each do |confirmation| %>
+        <li class="list-group-item"><%= User.find(confirmation.event_attendee_id).username %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
