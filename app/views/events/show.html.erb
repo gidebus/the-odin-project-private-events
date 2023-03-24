@@ -30,7 +30,7 @@
       <h3>Attendees</h3>
       <ul class="list-group">
         <% @event.confirmations.each do |confirmation| %>
-          <li class="list-group-item"><%= User.find(confirmation.event_attendee_id).username %></li>
+          <li class="list-group-item"><%= User.find(confirmation.event_attendee_id).email %></li>
         <% end %>
       </ul>
     </div>
