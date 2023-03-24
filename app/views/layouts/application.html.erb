@@ -14,15 +14,11 @@
 
   <body>
     <%= render partial: 'shared/navbar' %>
-    <div class='container-fluid'>
-      <div class='row g-3'>
-        <% flash.each do |name, message| %>
-          <div class="<%= name %> alert-warning" role="alert"><%= message %></div>
-        <% end %>
-        
-        <%= yield %>
-
-        </div>
-    </div>
+    
+      <% flash.each do |name, message| %>
+        <div class="<%= name %> alert-warning" role="alert"><%= message %></div>
+      <% end %>
+      
+      <%= yield %>
   </body>
 </html>
