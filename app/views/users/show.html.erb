@@ -1,27 +1,36 @@
-<section class='p-4 col-lg-6' id='user-profile'>
-  <h2><%= @user.username %></h2>
-  <h2><%= @user.email %></h2>
-
-  <%= link_to 'Edit Profile', edit_user_registration_path %>
+<section class='p-4' id='user-profile'>
+  <div class="card mx-auto">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1nLMoUrHQq1IrsIjeE56t5bstlCQt4QLnjQ&usqp=CAU" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h3 class="card-title"><%= @user.username %></h3></h1>
+      <h3 class="card-title"><%= @user.email %></h3></h1>
+      <%= link_to 'Edit Profile', edit_user_registration_path %>
+    </div>
+  </div>
   <div>
-    <h4>Created Events</h4>
-    <% @user.created_events.each do |event| %>
-      <p><%= event.name %></p>
-    <% end %>
-    <div>
-      <h3>Upcoming Events</h3>
-        <ul class="list-group">
-          <% @user.attended_events.where("date >= ? ", Date.today).each do |event| %>
-            <li class="list-group-item"><%= event.name %></li>
-          <% end %>
-        </ul>
+    <div class="card mx-auto m-3">
+      <div class="card-header">Created Events</div>
+      <div class="card-body">
+        <% @user.created_events.each do |event| %>
+          <p class='card-text'><%= event.name %></p>
+        <% end %>
       </div>
-      <h3>Past Events</h3>
-        <ul class="list-group">
+    </div>
+    <div class="card mx-auto m-3">
+      <div class="card-header">Upcoming Events</div>
+      <div class="card-body">
+        <% @user.attended_events.where("date >= ? ", Date.today).each do |event| %>
+          <p class="card-text"><%= event.name %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="card mx-auto m-3">
+      <div class="card-header">Past Events</div>
+      <div class="card-body">
           <% @user.attended_events.where("date < ? ").each do |event| %>
-            <li class="list-group-item"><%= event.name %></li>
+            <p class="card-text"><%= event.name %></p>
           <% end %>
-        </ul>
       </div>
+    </div>
   </div>
 </section>
