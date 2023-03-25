@@ -30,19 +30,29 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    if @event.update(event_params)
-      flash[:success] = "#{@event.name} was edited."
-      redirect_to @event
+    if @event.creator_id == current_user.id
+      if @event.update(event_params)
+        flash[:success] = "#{@event.name} was edited."
+        redirect_to @event
+      else
+        render 'edit', status: :unprocessable_entity
+      end
     else
-      render 'edit', status: :unprocessable_entity
+      flash[:notice] = "Only hosts can edit this event."
+      redirect_to @event
     end
   end
 
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
-    flash[:success] = "#{@event.name} was deleted."
-    redirect_to root_path
+    if @event.creator_id == current_user.id
+      @event.destroy
+      flash[:success] = "#{@event.name} was deleted."
+      redirect_to root_path
+    else
+      flash[:notice] = "Only hosts can edit this event."
+      redirect_to @event
+    end
   end
 
   private
